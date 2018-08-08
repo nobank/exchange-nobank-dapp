@@ -1,0 +1,36 @@
+.symbols:hover{
+  cursor: pointer;
+}
+#my_history:hover{
+	cursor:pointer;
+	color:yellow;
+}
+.ticker_element:hover{
+	background: grey;
+	cursor:pointer;
+}
+.selectable_pair:hover{
+	cursor: pointer;
+}
+.history_orders:hover{
+	background: #CFC6C6 !important;
+}
+.history_orders td a{
+	color: #1D4ED7;
+}
+.history_orders td{
+	padding: 5px !important;
+	text-align: center !important;
+}
+.table-sortable thead{
+	background: #D3C1C1;
+
+}
+.table-sortable th{
+	color:black;
+}
+.table-sortable td{
+	color:white;
+	padding:4px;
+	text-align: center;
+}

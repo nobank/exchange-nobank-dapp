@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8" />
+	<meta name="description" content="NoBank">
+	<!-- <link rel="icon" href="images/imagen.ico" type="image/x-icon" /> -->
+	<title data-react-helmet="true">NoBank</title>
+	<meta name="theme-color" content="#000000" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
+	<link href="css/flags/flag-icon.css" rel="stylesheet" />
+	<link href="css/flags/docs.css" rel="stylesheet" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" href="css/perfect-scrollbar.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+	<link rel="shortcut icon" type="image/png" href="./favicon/android-icon-144x144.png"/>
+	<script src="js/jquery-1.11.3.min.js"></script> 
+
+	<script type="text/javascript" src="js/jquery.translate.js"></script>
+	<script type="text/javascript" src="js/languages.js"></script>
+
+</head>
+<body>
+<div>
+	<div data-reactroot="">
+		<div id="t" class="flex-column">
+			<nav class="navbar navbar-default">
+				<div id="plugins-anchor"></div>
+				<div class="container-fluid"> 
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">
+							<!-- <img src="images/cropped-logo.png" id="logo" /> -->
+							<span class="txtlogo">NoBank Exchange</span>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="dropdown" id="pairs-dropdown">
+								<a href="javascript:void(0)" class="selected dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span id="selected"></span><span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" id="pairsAviable">
+									<!-- <li>ETH/0x</li> -->
+								</ul>
+							</li>
+							<li>
+								<div class="trade-info">
+									<div class="trade-info-number">
+										<strong><strong class="text-success" id="arrow_last_price">
+											<i class="fa fa-caret-up" aria-hidden="true"></i><span class="last_price"></span>
+										</strong></strong>
+										<span class="p2"><span></span></span>
+									</div>
+									<div class="trade-info-label"><span class="trn">Ultimo Precio</span></div>
+								</div>
+							</li>
+							<li>
+								<div class="trade-info">
+									<div class="trade-info-number">
+										<strong><strong class=" text-success" id="arrow_24_price">
+											<i class="fa fa-caret-up" aria-hidden="true"></i><span class="last_24_price"></span>
+										</strong></strong>
+									</div>
+									<div class="trade-info-label"><span class="trn">24h precio</span></div>
+								</div>
+							</li>
+							<li>
+								<div class="trade-info">
+									<div class="trade-info-number">
+										<strong><strong class="text-success" id="arrow_big_24_price">
+											<i class="fa fa-caret-up" aria-hidden="true"></i><span class="high_price">0.00 ETH</span>
+										</strong></strong>
+									</div>
+									<div class="trade-info-label"><span class="trn">24h alto precio</span></div>
+								</div>
+							</li>
+							<li>
+								<div class="trade-info">
+									<div class="trade-info-number">
+										<strong><strong class=" text-danger">
+											<i class="fa fa-caret-down" aria-hidden="true"></i><span class="low_price">0.00 ETH</span>
+										</strong></strong>
+									</div>
+									<div class="trade-info-label"><span class="trn">24h bajo precio</span></div>
+								</div>
+							</li>
+							<li>
+								<div class="trade-info">
+									<div class="trade-info-number">
+										<strong id="ether_volume">0</strong> ETH
+									</div>
+									<div class="trade-info-label"><span class="trn">ETH volume</span></div>
+								</div>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<!-- <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<div class="flag-wrapper" style="width: 20px;height: 15px;margin: 0px;top: 3px;">
+										<div class="img-thumbnail flag flag-icon-background flag-icon-gb" style="border-radius: 2px;"></div>
+									</div>
+									<span>English</span>
+									<span class="caret"></span>
+								</a> -->
+								<ul class="dropdown-menu">
+									<li>
+										<a href="javascript:void(0)">
+											<div class="flag-wrapper" style="width: 20px;height: 15px;margin: 0px;top: 3px;">
+												<div class="img-thumbnail flag flag-icon-background flag-icon-gb" style="border-radius: 2px;"></div>
+											</div>
+											English
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)">
+											<div class="flag-wrapper" style="width: 20px;height: 15px;margin: 0px;top: 3px;">
+												<div class="img-thumbnail flag flag-icon-background flag-icon-es" style="border-radius: 2px;"></div>
+											</div>
+											Espa&ntilde;ol
+										</a>
+									</li> 
+								</ul>
+							</li>
+							<!-- <li><a href="javascript:void(0)" class="text-danger"><strong><span>TOUR</span></strong></a></li> -->
+							<li><a href="help.html" id="link_ayuda" target="_blank"><span class="trn">AYUDA</span></a></li>
+							<li class="dropdown accounts">
+								<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<div class="detecting">
+										<span class="trn">Language</span>
+										<!-- <i class="fa fa-spinner fa-pulse fa-fw"></i> -->
+										<span class="caret"></span>
+									</div>
+								<!-- 	<div class="yourAccount hide">
+										<span> Account Detected</span>
+										<span class="caret"></span>
+									</div> -->
+
+								</a>
+								<ul class="dropdown-menu">
+									<li><a onclick="setLanguage('en');" class="trn">English</a></li>
+									<li><a onclick="setLanguage('es');" class="trn">Spanish</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="ddex-row">
+				<div class="ddex-grid-left" >
+					<div class="box box-mb flex flex-column" id="tickers">
+						<div class="box-header"><span class="trn">TICKERS</span>
+							<div class="ticker-search form-inline pull-right">
+								<div class="form-group">
+									<!-- <div class="relative">
+										<input class="form-control" placeholder="Search" value="" />
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="box-content flex-1 relative" style="overflow-y:scroll;max-height: 100px"> 
+							<table class="table">
+								<tbody>
+									<tr style="background: black;padding:12px;font-size: 10px">
+										<th class="text-left" style="padding-left:4px;padding-right: 4px;color:white"><span class="trn">Simbolo</span></th>
+										<th class="text-right" style="padding-left:4px;padding-right: 4px;color:white"><span class="trn">Ultimo Precio</span></th>
+										<th class="text-right" style="padding-left:4px;padding-right: 4px;color:white"><span class="trn">24h precio</span></th>
+										<th class="text-right" style="padding-left:4px;padding-right: 4px;color:white"><span class="trn">24h volumen</span></th>
+									</tr>
+									<!-- <tr>
+										<th class="text-left"><span>ETH</span></th>
+										<th class="text-right"><span>0</span></th>
+										<th class="text-right"><span>0</span></th>
+										<th class="text-right"><span>0</span></th>
+									</tr> -->
+									<tbody id="tickers_list">
+																				
+									</tbody>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="box box-mb" style="height:auto" id="trade">
+						<div>
+							<div class="box-header"><span class="trn">INTERCAMBIO</span></div>
+							<ul class="box-nav">
+								<li id="opcBuy" class="active"><a><span class="trn">COMPRAR</span></a></li>
+								<li id="opcSell" class="" style="float:right"><a><span class="trn">VENDER</span></a></li>
+							</ul>
+							<div class="box-content">
+								<div>
+									<form id="formTrade" novalidate>
+										<div>
+											<div class="form-group">
+												<label><span class="trn">Precio</span></label>
+												<div class="btn-group pull-right trade-utils" data-toggle="buttons">
+													<!-- <a href="javascript:void(0)" class="util" tabindex="-1"><span>Ask</span></a> -->
+													<!-- <a href="javascript:void(0)" class="util" tabindex="-1"><span>Bid</span></a> -->
+												</div>
+												<span class="unit currentTokenTwo"></span>
+												<input class="form-control" id="price"  name="price" value="" data-required-error="Price required" data-pattern-error="Price must be a number"  pattern="^[0-9]+([.][0-9]+)?$" autoComplete="off" placeholder="" required/>
+												<div class="help-block with-errors"></div>
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											</div>
+											<div class="form-group">
+												<label><span class="trn">Cantidad</span></label>
+												<div class="btn-group pull-right trade-utils" data-toggle="buttons">
+												<!-- 	<a href="javascript:void(0)" class="util" tabindex="-1">25%</a>
+													<a href="javascript:void(0)" class="util" tabindex="-1">50%</a>
+													<a href="javascript:void(0)" class="util" tabindex="-1">75%</a>
+													<a href="javascript:void(0)" class="util" tabindex="-1">100%</a> -->
+												</div>
+												<span class="unit currentTokenOne"></span>
+												<input class="form-control" id="amount"  name="amount" value="" data-required-error="Amount required" data-pattern-error="Amount must be a number" pattern="^[0-9]+([.][0-9]+)?$" autoComplete="off" placeholder="" required/>
+												<div class="help-block with-errors"></div>
+												<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											</div>
+											<div class="costs">
+												<div class="total-amount"><span class="trn">Total</span>
+													<span style="float: right;vertical-align:top;margin-left:5px">&#126; <span id="total_order"></span> <span class="currentTokenTwo"></span></span>
+												</div>
+											</div>
+											<div class="costs" style="margin-bottom:10px;width: 100%">
+												<div class="fee" style="cursor:pointer"><span style="float: left;" class="trn">fee</span><span style="position: relative;right: -132%;"> &#126; <span id="Totalcomi"></span> <span class="currentTokenTwo"></span> <i class="fa fa-question-circle" aria-hidden="true"></i></span></div>
+											</div>
+											<button type="submit" id="btnSend" class="btn btn-success btn-block order_buy_btn">
+												<span id="accion" class="trn">COMPRAR</span> 
+												<span class="currentTokenOne"></span>
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box box-mb balance">
+						<div class="box-header"><span class="trn">BALANCES</span></div>
+						<div class="box-content relative" style="padding-top: 0px">
+							<div id="table-balances"  style="overflow:hidden;height: 120px">
+								<table class="table">
+									<thead>
+									 	<tr>
+											<th class="text-left min trn" ><span>Simbolos</span></th>
+											<th class="text-right trn"><span>Balance</span></th>
+										</tr>
+				                    </thead>
+									<tbody>
+										<tr class='active symbols' >
+											<td style="padding:4px" >ETH</td>
+											<td id="ethBalance" style="text-align:right;padding:4px"></td>
+										</tr>
+										<tr class='symbols'>
+											<td style="padding:4px" class="currentTokenOne"></td>
+											<td id="CurrentTokenOne_balance" style="text-align:right;padding:4px"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="flex">
+								<div class="flex-1" style="padding-right:10px">
+									<button id="wrap-eth-button" class="btn btn-success btn-block btn-xs deposit_ether">
+										<span class="trn">Depositar</span>
+										<span class="currentTokenOne-balance" idmoneda=""></span>
+									</button>
+								</div>
+								<div class="flex-1">
+									<button id="wrap-eth-button_withdraw" class="btn btn-danger btn-block btn-xs withdraw_ether">
+										<span class="trn">Retirar</span>
+										<span class="currentTokenOne-balance"></span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="ddex-grid-middle">
+					<div class="box box-mb flex-1 flex-column">
+						<div class="box-header"><span class="trn">HISTORIAL DE PRECIOS</span></div>
+						<div class="relative flex-1">
+							<div id="chartdiv2" style="height:100%"></div>
+						</div>
+					</div>
+					<div class="box flex-1 flex flex-column">
+						<div class="box-header"><span class="trn">PEDIDOS</span> | <span id="my_history" data-toggle="modal" data-target="#exampleModal" class="trn">Mi Historial</span> </div>
+						<div class="relative flex-1">
+							<div class="box-content absolute-parent" style="overflow-y: scroll;">
+								<table class="table">
+									 <thead>
+									  <th style="width: 12%" class="trn">PAR</th>
+				                      <th style="width: 13%" class="trn">TIPO</th>
+				                      <th style="width: 14%" class="trn">CANTIDAD</th>
+				                      <th style="width: 16%" class="trn">PRECIO</th>
+				                      <th style="width: 27%"><span></span></th>
+				                    </thead>
+									<tbody class="orders_tbody">
+									</tbody>
+								</table>
+								<div class="no-orders" style="padding: 5px;text-align: center"></div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title trn" id="exampleModalLabel" >Mi Historial</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body" style="height: 300px;overflow-y: scroll;">
+					      	<table class="table table-bordered table-sortable" style="width:100%;">
+					      		<thead>
+					      			<th style="text-align: center;" class="trn">Precio</th>
+					      			<th style="text-align: center;" class="trn">Cantidad</th>
+					      			<th style="text-align: center;" class="trn">Fecha</th>
+					      			<th style="text-align: center;" class="trn">Tx</th>
+					      		</thead>
+					      		<tbody id="my_history_body">
+					      			
+					      		</tbody>
+					      	</table>
+					      </div>
+					      <div class="modal-footer" >
+					        <button type="button" class="btn btn-default trn" data-dismiss="modal" >Cerrar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<div class="ddex-grid-right">
+					<div class="box flex-1 flex flex-column">
+						<div class="box-header"><span class="trn">LIBRO DE ORDENES</span>
+							<span class="pull-right">
+								<!-- <i class="fa fa-minus-circle" aria-hidden="true" style="margin-right:20px;cursor:pointer"></i>
+								0.00000000001<i class="fa fa-plus-circle" aria-hidden="true" style="margin-left:20px;cursor:pointer"></i> -->
+							</span>
+						</div>
+						<div class="flex-1">
+							<div class="box-content">
+								<label class="trn">Ordenes de Compra</label>
+
+								<table class="table" style="border-bottom: solid 2px;">
+									<tbody>
+										<tr >
+											<th><span>Vol</span></th><th class="text-right"><span class="trn">Precio</span></th>
+											<th class="text-right"><span class="trn">Cantidad</span></th>
+										</tr>
+									</tbody>
+								</table>
+								<div class="relative" style="height: 250px;overflow-y:scroll" id="order-book-buy">
+									<table class="table">
+										<tbody class="order_sell">
+										</tbody>
+									</table>
+								</div>
+								<label for="" class="trn">Ordenes de Venta</label>
+
+								<div class="table" style="border-bottom: solid 2px;padding: 10px;">
+								</div>
+								<div class="relative" style="height: 250px;overflow-y:scroll" id="order-book-sell">
+									<table class="table">
+										<tbody class="order_buy">
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Modal para depositar ether-->
+<div class="modal fade" id="depositEtherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title " id="myModalLabel"><span class="trn">Depositar</span> <span class="currentTokenTwo"></span></h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <form action="">
+          <div class="form-group">
+            <label>Ether</label>
+            <input type="text" id="ether_to_deposit" class="form-control" style="width: 100%;text-align: left;">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer"  style="background: white;">
+        <button type="button" class="btn btn-default trn" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="deposit_ether_btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal para depositar token-->
+<div class="modal fade" id="depositTokenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" ><span class="trn">Depositar</span> <span class="currentTokenOne"></span></h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <form action="">
+          <div class="form-group">
+            <label class="trn">Token</label>
+            <input type="text" id="token_to_deposit" class="form-control" style="width: 100%;text-align: left;">
+          </div>
+          <div class="form-group ">
+            <label class="trn">Permitido</label>
+            <input type="text" readonly="readonly" id="allowance_result" class="form-control"  style="width: 100%;text-align: left;">
+            <div class="allowance_message muted"></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="background: white;">
+        <button type="button" class="btn btn-default trn" data-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-primary trn" id="deposit_token_btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal para retirar token-->
+<div class="modal fade" id="withdrawTokenModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" ><span class="trn">Retirar</span> <span class="currentTokenOne"></span></h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <form action="">
+          <div class="form-group">
+            <label class="trn">Cantidad</label>
+            <input type="number" id="token_to_withdraw" step="0.0000000001" class="form-control" style="width: 100%;text-align: left">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="background: white;">
+        <button type="button" class="btn btn-default trn" data-dismiss="modal" >Cerrar</button>
+        <button type="button" class="btn btn-primary trn" id="withdraw_token_btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Retirar ethers-->
+<div class="modal fade" id="withdrawEtherModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" ><span class="trn">Retirar</span> <span class="currentTokenTwo"></span></h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <form action="">
+          <div class="form-group">
+            <label class="trn">Cantidad</label>
+            <input type="number" id="ether_to_withdraw" step="0.0001" class="form-control" style="width: 100%;text-align: left">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" style="background: white;">
+        <button type="button" class="btn btn-default trn" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary trn" id="withdraw_ether_btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!--Modal de espera-->
+<div class="modal fade" id="waiting_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title trn" id="myModalLabel">Cargando</h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <center>
+          <p  class="trn">
+            Esperando....
+          </p>
+        </center>
+      </div>
+      <div class="modal-footer" style="background: white;"></div>
+    </div>
+  </div>
+</div> 
+<!--Modal de net-->
+<div class="modal fade" id="net_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title trn"  id="myModalLabel">Importante!</h4>
+      </div>
+      <div class="modal-body" id="myModalBody">
+        <center>
+          	<span class="trn">Por favor, selecciona Kovan como tu red en metamask!</span>
+        </center>
+      </div>
+      <div class="modal-footer" style="background: white;"></div>
+    </div>
+  </div>
+</div> 
+<!-- <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script> -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/perfect-scrollbar.js"></script>
+<script src="js/validator.min.js"></script>
+<script src="js/highstock.js"></script>
+<script src="js/async.min.js"></script>
+<script src="js/exporting.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> -->
+<script src="js/web3.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script src="js/functions.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html> 

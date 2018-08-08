@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8" />
+	<meta name="description" content="NoBank Exchange - Alpha release">
+	<link rel="icon" href="images/imagen.icono" type="image/x-icon" />
+	<title data-react-helmet="true">NoBank Exchange - Ayuda</title> 
+	<meta name="theme-color" content="#000000" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" />
+	<link href="css/flags/flag-icon.css" rel="stylesheet" />
+	<link href="css/flags/docs.css" rel="stylesheet" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" href="css/perfect-scrollbar.css">
+	<!-- <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script> -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/perfect-scrollbar.js"></script>
+	<script src="js/validator.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				url:'./ExchAddress.json',
+				success:function(r){
+					$("#exchange_address").text(r.exchangeAddress)
+				}
+			})
+			$.ajax({
+				url:'./tokens.json',
+				success:function(r){
+					$("#token_address").text(r.tokens[0].address)
+					$("#token_abi").text(JSON.stringify(r.tokens[0].abi))
+				}
+			})			
+		})
+	</script>
+</head>
+<body>
+<div id="root">
+	<div data-reactroot="">
+		<div id="t" class="flex-column">
+			<nav class="navbar navbar-default">
+				<div id="plugins-anchor"></div>
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html">
+							<!--<img src="images/sidebar-logo.png" id="logo" />-->
+							<span class="txtlogo">NoBank Exchange</span>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						
+						<ul class="nav navbar-nav navbar-right">
+						
+							<li><a href="help.html"><span>Ayuda</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="box flex-1 flex flex-column">
+				<div class="box-header" style="padding-left: 30px;"><h4 style="margin: 3px;">Instrucciones para aprobar sus tokens</h4></div>
+				<div class="relative flex-1 box" style="margin:-6px">
+					<div class="box-content " style="padding-left: 30px;padding-right: 30px;">
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #a9aaaa;margin-right: 10px;font-weight: 800;"></i>
+							Vaya a <a href="https://www.myetherwallet.com" target="_blank" style="text-decoration:none;color:#6db7ed">https://www.myetherwallet.com</a>
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							En la parte superior derecha, asegurese de estar conectado a la red Ethereum (cualquiera de las cuatro primeras opciones en el men&uacute; desplegable)
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Haga clic en la secci&oacute;n <a href="https://www.myetherwallet.com/#contracts" target="_blank" style="color:#6db7ed">"Contratos"</a> (segundo desde la izquierda).
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Pegue estos valores en los cuadros de texto:
+						</p>
+						<p style="text-align: justify;font-size: 14px;padding-left: 30px;">
+							<span>Direcci&oacute;n del contrato: <br> <span style="font-weight:600" id="token_address"></span></span>
+						</p>
+						<p style="text-align: justify;font-size: 14px;padding-left: 30px;">
+							<span >ABI / JSON: <br>
+								<span style="font-weight:600" id="token_abi">[{"anonymous": false, "inputs": [{"indexed": true, "name": "_owner", "type": "address"}, {"indexed": true, "name": "_spender", "type": "address"}, {"indexed": false, "name": "_value", "type": "uint256"} ], "name": "Approval", "type": "event"}, {"constant": false, "inputs": [{"name": "_spender", "type": "address"}, {"name": "_value", "type": "uint256"} ], "name": "approve", "outputs": [{"name": "success", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": false, "inputs": [{"name": "_spender", "type": "address"}, {"name": "_value", "type": "uint256"}, {"name": "_extraData", "type": "bytes"} ], "name": "approveAndCall", "outputs": [{"name": "success", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": false, "inputs": [{"name": "_to", "type": "address"}, {"name": "_value", "type": "uint256"} ], "name": "transfer", "outputs": [{"name": "success", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"constant": false, "inputs": [{"name": "_from", "type": "address"}, {"name": "_to", "type": "address"}, {"name": "_value", "type": "uint256"} ], "name": "transferFrom", "outputs": [{"name": "success", "type": "bool"} ], "payable": false, "stateMutability": "nonpayable", "type": "function"}, {"anonymous": false, "inputs": [{"indexed": true, "name": "_from", "type": "address"}, {"indexed": true, "name": "_to", "type": "address"}, {"indexed": false, "name": "_value", "type": "uint256"} ], "name": "Transfer", "type": "event"}, {"inputs": [{"name": "_initialAmount", "type": "uint256"}, {"name": "_tokenName", "type": "string"}, {"name": "_decimalUnits", "type": "uint8"}, {"name": "_tokenSymbol", "type": "string"} ], "payable": false, "stateMutability": "nonpayable", "type": "constructor"}, {"payable": false, "stateMutability": "nonpayable", "type": "fallback"}, {"constant": true, "inputs": [{"name": "_owner", "type": "address"}, {"name": "_spender", "type": "address"} ], "name": "allowance", "outputs": [{"name": "remaining", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [{"name": "_owner", "type": "address"} ], "name": "balanceOf", "outputs": [{"name": "balance", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "decimals", "outputs": [{"name": "", "type": "uint8"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "name", "outputs": [{"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "symbol", "outputs": [{"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "totalSupply", "outputs": [{"name": "", "type": "uint256"} ], "payable": false, "stateMutability": "view", "type": "function"}, {"constant": true, "inputs": [], "name": "version", "outputs": [{"name": "", "type": "string"} ], "payable": false, "stateMutability": "view", "type": "function"} ]</span>
+							</span>
+						</p>
+						<p style="text-align: justify;font-size: 14px;margin-top: 15px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Haga clic en el bot&oacute;n Acceso.
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Seleccione la funci&oacute;n "aprobar" en el men&uacute; desplegable debajo del t&iacute;tulo "contrato de lectura / escritura"
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							En _spender, pegue la direcci&oacute;n de Exchange v0.7.3:
+						</p>
+						<p style="text-align: justify;font-size: 14px;padding-left: 30px;">
+							<span style="font-weight:600" id="exchange_address"></span>
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							En _value, pegue la cantidad de tokens que desea aprobar para depositar.
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Debajo de las entradas, debajo del t&iacute;tulo "&iquest;C&oacute;mo le gustar&iacute;a acceder a su billetera?", Elija la forma en que desea conectarse (MetaMask, billetera Ledger, etc.)
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							IMPORTANTE: la cuenta que usa para conectarse (y, por lo tanto, para aprobar el env&iacute;o) debe ser un titular de JEI con saldo suficiente, la misma direcci&oacute;n que depositar&oacute; en Exchange.
+						</p>
+						<p style="text-align: justify;font-size: 14px;">
+							<i class="fa fa-angle-right" style="color: #FF9800;margin-right: 10px;font-weight: 800;"></i>
+							Deje que MyEtherwallet sugiera el l&iacute;mite de gas (o config&uacute;relo en 100000 para asegurarse de que sea lo suficientemente alto) y presione el bot&oacute;n "Generar transacci&oacute;n", luego el bot&oacute;n "Enviar transacci&oacute;n", luego siga las instrucciones de acuerdo con el acceso elegido.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html> 

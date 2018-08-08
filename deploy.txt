@@ -1,0 +1,4 @@
+1- deploy exchange
+2- add erc20 tokens to whitelist
+3- add ether 0x0000000000000000000000000000000000000000 whitelist
+4- change accountLevelsAddr to 0x0
